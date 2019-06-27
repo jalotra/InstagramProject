@@ -27,22 +27,26 @@ class SearchHastags(Logger.LoginInstagram):
     def print_list_elements(self, AnyList):
         count = 0
         for elements in AnyList:
-            count += 1
-            print(elements , count) 
+            try:
+                count += 1
+                print(elements)
+            except elements == None:
+                pass
 
-    def pattern_finder(self, newlist):
-        finalList = []
-        pattern = re.compile(r'\w+:/.\w+[.]\w+[.]\w+/p/\w+[-]\w+[/]')
-        for elements in newlist:
-            finded = pattern.findall(elements)
-            finalList += finded   
+    def pattern_finder(self, variableToBeMatched):
+        # This can change with respect to changes in netflix developers changing the elements urls.
+        # pattern = re.compile(r'\w+:/.\w+[.]\w+[.]\w+/p/\w+[-]\w+[/]')
         
-        return finalList
+        pattern = re.compile(r'\w+:/.\w+[.]\w+[.]\w+/p/\w*')
+        answer = re.match(pattern , variableToBeMatched)
+        if answer is not None:
+            return answer.group()
+        
 
             
     def getting_photos_links(self, hashtag = '\0'):
         navigateForward = input('Do you want to go to the hashtag pages'
-        '.\n The possible answers can be \n 1.Yes \n 2.No \n ---> ')
+        '.\n The possible answers can be \n 1.Yes \n 2.No \n-->')
 
         if navigateForward == 'yes' or navigateForward == 'Yes':
             self.driver.get('https://www.instagram.com/explore/tags/' + str(hashtag))
@@ -54,7 +58,10 @@ class SearchHastags(Logger.LoginInstagram):
                 pictureHrefElements = self.driver.find_elements(By.TAG_NAME, 'a')
                 pictureHrefs = []
                 for elements in pictureHrefElements:
-                    pictureHrefs.append(elements.get_attribute('href')) 
+                    # pictureHrefs.append(elements.get_attribute('href')) 
+                    newElement = elements.get_attribute('href')
+                    self.hashtagLinksList.append(self.pattern_finder(newElement))
+
                     '''Here all the href elements are getting in 
                     For example : 
                     if hastag == 'singers'
@@ -69,9 +76,13 @@ class SearchHastags(Logger.LoginInstagram):
                 #Now I have to extract only the elements that are enclosed into the /p/ tags 
                 #for example this baby right here --> https://www.instagram.com/p/By-zmY3B7Ke/
                 #Using some regex Magic
-                pictureHrefs = self.pattern_finder(pictureHrefs)
 
-                self.hashtagLinksList += pictureHrefs
+                # time.sleep(self.sleepTime)
+
+                # Uncomment This
+                # pictureHrefs = self.pattern_finder(pictureHrefs)
+
+                # self.hashtagLinksList.append(pictureHrefs)
                 # pictureHrefs = [href for href in pictureHrefs if hashtag in href]
                 # print(hashtag + 'photos are :' + str(len(pictureHrefs)))
 
@@ -91,7 +102,9 @@ class SearchHastags(Logger.LoginInstagram):
             self.getting_photos_links(hashtag)
 
     
-    def main(self):
+    def main(self ,hashtag):
+        self.getting_photos_links(hashtag)
+        time.sleep(self.sleepTime)
         return self.hashtagLinksList
 
         
@@ -113,6 +126,6 @@ class SearchHastags(Logger.LoginInstagram):
 if __name__ == "__main__":
     SearchObject = SearchHastags('', '')
     SearchObject.login_in_instagram() #Working
-    SearchObject.getting_photos_links('singers')
+    # SearchObject.getting_photos_links('singers')
+    SearchObject.print_list_elements(SearchObject.main('singers'))
     # SearchObject.print_login_details() #Working
-    # SearchObject.print_hastag_list() #NOt woking
