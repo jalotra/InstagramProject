@@ -30,7 +30,6 @@ python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 
-Then add the hashtag in constructor of the liking_all_hashtags_links.py file.
 
 chmod +x increase_my_followers.bash 
 source ./increase_my_followers.bash 
