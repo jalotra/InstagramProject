@@ -2,6 +2,7 @@ import login_into_instagram as Logger
 from selenium.webdriver.common.by import By
 import time
 import re
+import sys
 
 class SearchHastags(Logger.LoginInstagram):
     def __init__(self, username, password, HASHTAG):
@@ -125,7 +126,7 @@ class SearchHastags(Logger.LoginInstagram):
 
 
 if __name__ == "__main__":
-    SearchObject = SearchHastags('', '', '')
+    SearchObject = SearchHastags(sys.argv[1], sys.argv[2], sys.argv[3])
     SearchObject.login_in_instagram() #Working
     # SearchObject.getting_photos_links('singers')
     print(SearchObject.main())

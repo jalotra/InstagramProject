@@ -6,6 +6,7 @@ from selenium.webdriver.support.expected_conditions import presence_of_all_eleme
 from selenium.common.exceptions import NoSuchElementException
 import time
 import requests
+import sys
 
 INSTAGRAM_HOMEPAGE_URL = str("https://www.instagram.com")
 
@@ -74,7 +75,7 @@ class LoginInstagram():
 
 
 if __name__ == "__main__":
-    Object = LoginInstagram('', '')
+    Object = LoginInstagram(sys.argv[1], sys.argv[2])
     # Object.__str__()
     try:
         Object.login_in_instagram()
