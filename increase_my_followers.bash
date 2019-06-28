@@ -10,8 +10,8 @@ read -p 'Your Webbrowser:' Webbrowser
 function install_geckodriver()
 {
     wget https://github.com/mozilla/geckodriver/releases/download/v0.24.0/geckodriver-v0.24.0-linux64.tar.gz
-    sudo sh -c 'tar -x geckodriver -zf geckodriver-v0.24.0-linux64.tar.gz -O > /venv/bin/geckodriver'
-    sudo chmod +x /venv/bin/geckodriver
+    sudo sh -c 'tar -x geckodriver -zf geckodriver-v0.24.0-linux64.tar.gz -O > /usr/bin/geckodriver'
+    sudo chmod +x /usr/bin/geckodriver
     rm geckodriver-v0.24.0-linux64.tar.gz
     # export PATH=$PATH:/path-to-extracted-file/.
 }
@@ -20,7 +20,7 @@ function install_chromedriver()
     wget https://chromedriver.storage.googleapis.com/2.29/chromedriver_linux64.zip
     unzip chromedriver_linux64.zip
     sudo chmod +x chromedriver
-    sudo mv chromedriver /venv/bin/
+    sudo mv chromedriver /usr/bin/
     rm chromedriver_linux64.zip
     # export PATH=$PATH:/path-to-extracted-file/.
 }
@@ -28,7 +28,7 @@ if [ $Webbrowser == 'FIREFOX' ]
 then
     install_geckodriver
     echo GeckoDriver Installed
-else [ $Webbrowser == 'CHROME' ]
+elif [ $Webbrowser == 'CHROME' ]
 then 
     install_chromedriver
     echo ChromeDriverInstalled
