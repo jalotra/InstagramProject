@@ -26,11 +26,10 @@ back.Thus this increases the followers of that user.
 ### Install
 ```bash
 git clone ${this_repo_https_address}
+cd InstagramProject 
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-
-
 chmod +x increase_my_followers.bash 
 source ./increase_my_followers.bash 
 
