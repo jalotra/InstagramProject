@@ -16,7 +16,10 @@ class LoginInstagram():
         self.username = username 
         self.password = password
         self.sleepTime = 2
-        self.driver = webdriver.Firefox()
+        if sys.argv[1] == 'FIREFOX':
+            self.driver = webdriver.Firefox()
+        elif sys.argv[1] == 'CHROME':
+            self.driver = webdriver.Chrome()
 
     # def __str__(self):
     #     return  'Instagram Model to get more followers and using' + str(self.webdriver_ask()) + 'Webdriver Backend '
@@ -75,7 +78,7 @@ class LoginInstagram():
 
 
 if __name__ == "__main__":
-    Object = LoginInstagram(sys.argv[1], sys.argv[2])
+    Object = LoginInstagram(sys.argv[2], sys.argv[3])
     # Object.__str__()
     try:
         Object.login_in_instagram()

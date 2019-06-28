@@ -59,7 +59,7 @@ function loginInInstagram()
     # WORKS FINE
     python -V
     getUserDetails
-    python src/login_into_instagram.py $instaUsername $instaPassword
+    python src/login_into_instagram.py $Webbrowser $instaUsername $instaPassword
 
 }
 
