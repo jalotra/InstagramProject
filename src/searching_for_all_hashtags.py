@@ -4,14 +4,16 @@ import time
 import re
 
 class SearchHastags(Logger.LoginInstagram):
-    def __init__(self, username, password):
+    def __init__(self, username, password, HASHTAG):
+        self.hashtag = HASHTAG
         self.hashtagList = [] 
         self.hashtagLinksList = []
         super(SearchHastags,self).__init__(username, password)
     
     def print_login_details(self):
         print("username : {} \npassword : {}".format(self.username, self.password))
-        
+
+    
     def print_hastag_list(self):
         try:
             for lines in self.hashtagList:
@@ -45,13 +47,12 @@ class SearchHastags(Logger.LoginInstagram):
 
             
     def getting_photos_links(self, hashtag = '\0'):
-        navigateForward = input('Do you want to go to the hashtag pages'
-        '.\n The possible answers can be \n 1.Yes \n 2.No \n-->')
+        navigateForward = input('DO YOU WANT TO GO TO TAGS PAGE\n')
 
         if navigateForward == 'yes' or navigateForward == 'Yes':
             self.driver.get('https://www.instagram.com/explore/tags/' + str(hashtag))
             time.sleep(self.sleepTime)
-            searchPages = int(input('Enter how Many times do you want to scroll the {} Page '.format(hashtag)))
+            searchPages = int(input('\nENTER THE NUMBER OF TIMES DO YOU WANT TO SCROLL THE {} PAGE  '.format(hashtag)))
             while(searchPages):
    
                 #Done appending the hrefs Link of all the elements starting with anchor tags  
@@ -102,10 +103,10 @@ class SearchHastags(Logger.LoginInstagram):
             self.getting_photos_links(hashtag)
 
     
-    def main(self ,hashtag):
-        self.getting_photos_links(hashtag)
+    def main(self):
+        self.getting_photos_links(self.hashtag)
         time.sleep(self.sleepTime)
-        return self.hashtagLinksList
+        return list(filter(None, self.hashtagLinksList)) 
 
         
         
@@ -124,8 +125,8 @@ class SearchHastags(Logger.LoginInstagram):
 
 
 if __name__ == "__main__":
-    SearchObject = SearchHastags('', '')
+    SearchObject = SearchHastags('', '', '')
     SearchObject.login_in_instagram() #Working
     # SearchObject.getting_photos_links('singers')
-    SearchObject.print_list_elements(SearchObject.main('singers'))
+    print(SearchObject.main())
     # SearchObject.print_login_details() #Working
