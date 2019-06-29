@@ -29,8 +29,8 @@ function check_if_geckodriver_is_present()
 {
     current_location=`pwd`
     cd /usr/bin
-    geckodriver_variable = $(ls -l | grep -c "geckodriver")
-    if [ "$geckodriver_variable" -eq 1]
+    geckodriver_variable = $(ls | grep -c "geckodriver")
+    if [ "$geckodriver_variable" -eq 1 ]
     then
         echo Chromedriver IS ALREADY PRESENT
     else 
@@ -44,7 +44,7 @@ function check_if_chromedriver_is_present()
     
     current_location=`pwd`
     cd /usr/bin
-    chromedriver_variable = $(ls -l | grep -c "chromedriver")
+    chromedriver_variable = $(ls | grep -c "chromedriver")
     if [ "$chromedriver_variable" -eq 1 ]
     then
         echo Chromedriver IS ALREADY PRESENT
