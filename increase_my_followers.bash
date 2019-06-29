@@ -29,7 +29,7 @@ function check_if_geckodriver_is_present()
 {
     if [ $Webbrowser == 'FIREFOX' ]
     then
-        current_location=pwd
+        current_location=`pwd`
         cd /usr/bin
         if [ grep geckodriver == 'geckodriver' ]
         then
@@ -46,7 +46,7 @@ function check_if_chromedriver_is_present()
 {
     if [ $Webbrowser == 'CHROME' ]
     then
-        current_location=pwd
+        current_location=`pwd`
         cd /usr/bin
         if [ grep chromedriver == 'chromedriver' ]
         then
