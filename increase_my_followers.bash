@@ -17,7 +17,7 @@ function install_geckodriver()
 }
 function install_chromedriver()
 {
-    wget https://chromedriver.storage.googleapis.com/76.0.3809.25/chromedriver_linux64.zip
+    wget https://chromedriver.storage.googleapis.com/75.0.3770.90/chromedriver_linux64.zip
     unzip chromedriver_linux64.zip
     sudo chmod +x chromedriver
     sudo mv chromedriver /usr/bin/
