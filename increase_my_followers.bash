@@ -24,7 +24,43 @@ function install_chromedriver()
     rm chromedriver_linux64.zip
     # export PATH=$PATH:/path-to-extracted-file/.
 }
-if [ $Webbrowser == 'FIREFOX' ]
+
+function check_if_geckodriver_is_present()
+{
+    if [ $Webbrowser == 'FIREFOX' ]
+    then
+        current_location=pwd
+        cd /usr/bin
+        if [ grep geckodriver == 'geckodriver' ]
+        then
+            echo Geckodriver IS ALREADY PRESENT
+        else
+            cd $current_location  
+            download_drivers
+        fi
+          
+    fi
+}
+
+function check_if_chromedriver_is_present()
+{
+    if [ $Webbrowser == 'CHROME' ]
+    then
+        current_location=pwd
+        cd /usr/bin
+        if [ grep chromedriver == 'chromedriver' ]
+        then
+            echo Chromedriver IS ALREADY PRESENT
+        else 
+            cd $current_location
+            download_drivers
+        fi
+    fi
+}
+
+function download_drivers()
+{
+    if [ $Webbrowser == 'FIREFOX' ]
 then
     install_geckodriver
     echo GeckoDriver Installed
@@ -33,6 +69,9 @@ then
     install_chromedriver
     echo ChromeDriverInstalled
 fi
+
+}
+
      
 
 
@@ -71,3 +110,15 @@ function printHashtags()
     python src/searching_for_all_hashtags.py $Webbrowser $instaUsername $instaPassword $instaHashtag
 } 
 
+
+#Main procedure that will run
+
+ if [ $Webbrowser == 'FIREFOX' ]
+then
+    check_if_geckodriver_is_present
+    echo GeckoDriver Installed
+elif [ $Webbrowser == 'CHROME' ]
+then 
+    check_if_chromedriver_is_present
+    echo ChromeDriverInstalled
+fi
