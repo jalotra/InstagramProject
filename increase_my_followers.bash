@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo Hello User,I am the Instagram bot 
-echo I will help you get more Instagram Followers.But you have to tell me your Instagram Username , Password.\n
+echo I will help you get more Instagram Followers.But you have to tell me your Instagram Username and Password.
 
 
 echo I WILL SUPPORT TWO WEBBROWSERS ONLY FIREFOX AND CHROME. And type in all Capitals only.
