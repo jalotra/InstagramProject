@@ -77,7 +77,7 @@ fi
 function getUserDetails()
 {
     read -p 'Username:' instaUsername
-    read -p 'Password:' instaPassword
+    read -sp 'Password:' instaPassword
 }
 
 
