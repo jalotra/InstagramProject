@@ -97,9 +97,9 @@ class SearchHastags(Logger.LoginInstagram):
                 #         time.sleep(self.sleepTime*10)
                 #     except Exception:
                 #         time.sleep(1)   
-                time.sleep(self.sleepTime/2) 
-                self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);") 
-                time.sleep(self.sleepTime/2)    
+                    time.sleep(self.sleepTime/2) 
+                    self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);") 
+                    time.sleep(self.sleepTime/2)    
                 searchPages -= 1 
         else:
             self.getting_photos_links(hashtag)
