@@ -1,4 +1,5 @@
 import time
+import sys
 import searching_for_all_hashtags as Searcher
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException , InvalidArgumentException
@@ -105,7 +106,7 @@ class LikeAllHashtagsLinks(Searcher.SearchHastags):
 
 if __name__ == "__main__":
     try:
-        LikeObject = LikeAllHashtagsLinks('', '' , '')
+        LikeObject = LikeAllHashtagsLinks(sys.argv[1], sys.argv[2] , sys.argv[3])
         LikeObject.login_in_instagram()
         LikeObject.get_name_of_accounts()
         LikeObject.click_follow_button()
