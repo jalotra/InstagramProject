@@ -126,7 +126,7 @@ class SearchHastags(Logger.LoginInstagram):
 
 
 if __name__ == "__main__":
-    SearchObject = SearchHastags(sys.argv[1], sys.argv[2], sys.argv[3])
+    SearchObject = SearchHastags(sys.argv[2], sys.argv[3], sys.argv[4])
     SearchObject.login_in_instagram() #Working
     # SearchObject.getting_photos_links('singers')
     print(SearchObject.main())

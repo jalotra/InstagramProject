@@ -50,7 +50,7 @@ function increaseFollowers()
     #WORKS FINE
     getUserDetails
     read -p 'Hashtag:' instaHashtag
-    python src/liking_all_hashtags_links.py $instaUsername $instaPassword $instaHashtag
+    python src/liking_all_hashtags_links.py $Webbrowser $instaUsername $instaPassword $instaHashtag
 }
 
 
@@ -68,6 +68,6 @@ function printHashtags()
     #WORKS FINE
     getUserDetails
     read -p 'Hashtag:' instaHashtag
-    python src/searching_for_all_hashtags.py $instaUsername $instaPassword $instaHashtag
+    python src/searching_for_all_hashtags.py $Webbrowser $instaUsername $instaPassword $instaHashtag
 } 
 

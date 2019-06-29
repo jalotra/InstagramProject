@@ -106,7 +106,7 @@ class LikeAllHashtagsLinks(Searcher.SearchHastags):
 
 if __name__ == "__main__":
     try:
-        LikeObject = LikeAllHashtagsLinks(sys.argv[1], sys.argv[2] , sys.argv[3])
+        LikeObject = LikeAllHashtagsLinks(sys.argv[2], sys.argv[3] , sys.argv[4])
         LikeObject.login_in_instagram()
         LikeObject.get_name_of_accounts()
         LikeObject.click_follow_button()
