@@ -50,7 +50,7 @@ class SearchHastags(Logger.LoginInstagram):
     def getting_photos_links(self, hashtag = '\0'):
         navigateForward = input('DO YOU WANT TO GO TO TAGS PAGE\n')
 
-        if navigateForward == 'yes' or navigateForward == 'Yes':
+        if navigateForward.lower() == 'yes':
             self.driver.get('https://www.instagram.com/explore/tags/' + str(hashtag))
             time.sleep(self.sleepTime)
             searchPages = int(input('\nENTER THE NUMBER OF TIMES DO YOU WANT TO SCROLL THE {} PAGE  '.format(hashtag)))
@@ -62,7 +62,8 @@ class SearchHastags(Logger.LoginInstagram):
                 for elements in pictureHrefElements:
                     # pictureHrefs.append(elements.get_attribute('href')) 
                     newElement = elements.get_attribute('href')
-                    self.hashtagLinksList.append(self.pattern_finder(newElement))
+                    if newElement not in self.hashtagLinksList:
+                        self.hashtagLinksList.append(self.pattern_finder(newElement))
 
                     '''Here all the href elements are getting in 
                     For example : 
@@ -107,6 +108,7 @@ class SearchHastags(Logger.LoginInstagram):
     def main(self):
         self.getting_photos_links(self.hashtag)
         time.sleep(self.sleepTime)
+        print('TOTAL PICTURES OR VIDEOS FOUND IS {}'.format(len(self.hashtagLinksList)))
         return list(filter(None, self.hashtagLinksList)) 
 
         
