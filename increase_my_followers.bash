@@ -33,6 +33,7 @@ function check_if_geckodriver_is_present()
     if [ "$geckodriver_variable" -eq 1 ]
     then
         echo Chromedriver IS ALREADY PRESENT
+        cd $current_location
     else 
         cd $current_location
         download_drivers
@@ -48,6 +49,7 @@ function check_if_chromedriver_is_present()
     if [ "$chromedriver_variable" -eq 1 ]
     then
         echo Chromedriver IS ALREADY PRESENT
+        cd $current_location
     else 
         cd $current_location
         download_drivers
