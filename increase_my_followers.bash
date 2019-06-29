@@ -27,35 +27,32 @@ function install_chromedriver()
 
 function check_if_geckodriver_is_present()
 {
-    if [ $Webbrowser == 'FIREFOX' ]
+    current_location=`pwd`
+    cd /usr/bin
+    geckodriver_variable = $(ls -l | grep -c "geckodriver")
+    if [ $geckodriver_variable == '1']
     then
-        current_location=`pwd`
-        cd /usr/bin
-        if [ grep geckodriver == 'geckodriver' ]
-        then
-            echo Geckodriver IS ALREADY PRESENT
-        else
-            cd $current_location  
-            download_drivers
-        fi
-          
+        echo Chromedriver IS ALREADY PRESENT
+    else 
+        cd $current_location
+        download_drivers
     fi
 }
 
 function check_if_chromedriver_is_present()
 {
-    if [ $Webbrowser == 'CHROME' ]
+    
+    current_location=`pwd`
+    cd /usr/bin
+    chromedriver_variable = $(ls -l | grep -c "chromedriver")
+    if [ $chromedriver_variable == '1' ]
     then
-        current_location=`pwd`
-        cd /usr/bin
-        if [ grep chromedriver == 'chromedriver' ]
-        then
-            echo Chromedriver IS ALREADY PRESENT
-        else 
-            cd $current_location
-            download_drivers
-        fi
+        echo Chromedriver IS ALREADY PRESENT
+    else 
+        cd $current_location
+        download_drivers
     fi
+    
 }
 
 function download_drivers()
@@ -113,7 +110,7 @@ function printHashtags()
 
 #Main procedure that will run
 
- if [ $Webbrowser == 'FIREFOX' ]
+if [ $Webbrowser == 'FIREFOX' ]
 then
     check_if_geckodriver_is_present
     echo GeckoDriver Installed
