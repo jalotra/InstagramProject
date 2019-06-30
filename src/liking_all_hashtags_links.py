@@ -9,10 +9,11 @@ class LikeAllHashtagsLinks(Searcher.SearchHastags):
 
     def __init__(self, username, password, HASHTAG):
         super(LikeAllHashtagsLinks,self).__init__(username, password, HASHTAG)
+        self.Photolist = []
         
 
     def do_you_want_to_follow_all(self):
-        totalInstaAccountsFound = len(self.main())
+        totalInstaAccountsFound = len(self.Photolist)
         print('\n{0} PEOPLE ACCOUNTS CAN BE SCRAPED OUT FROM THE {1} PAGE\n.DO YOU WANT TO FOLLOW ALL THESE PEOPLE\n'.format(totalInstaAccountsFound ,self.hashtag ))
         
         followInput = input('YES OR NO \n')
@@ -24,8 +25,8 @@ class LikeAllHashtagsLinks(Searcher.SearchHastags):
             print('THANKYOU FOR USING ME.')
 
     def get_name_of_accounts(self):
-        Photolist = self.all_photos_elements_list()
-        for links in Photolist:
+        self.Photolist = self.all_photos_elements_list()
+        for links in self.Photolist:
             time.sleep(self.sleepTime/2)
             self.driver.get(links)
         #xpath for Follow Button: "//button[contains(text(), 'Follow')]"

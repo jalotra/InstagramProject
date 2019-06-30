@@ -1,5 +1,6 @@
 ### What is this Project About??
 ```bash
+		WORKS ON LINUX BASED DISTROS ONLY!
 This project is written in python3 builds upon selenium, geckodriver etc.
 With this project we exploit a very fundamental instint of a user using 
 Instagram. 
