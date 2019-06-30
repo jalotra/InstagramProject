@@ -37,7 +37,7 @@ source ./increase_my_followers.bash
 ```
 ### HowToRun
 ```bash
-increaseFollowers  
-loginInInstagram
-printHashtags
+increaseFollowers        --Can be used to like all the urls that a particular hashtag has on instagram and also follow all the accounts whom pictures that you just liked.
+loginInInstagram         --Can be used to login into Instagram Automatically
+printHashtags            --Can be used to print a list containing all the urls of photos and videos that a particular hashtag has on instagram.
 ```
