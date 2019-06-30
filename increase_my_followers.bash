@@ -1,8 +1,9 @@
 #!/bin/bash
 
+echo " "
 echo Hello User,I am the Instagram bot 
 echo I will help you get more Instagram Followers.But you have to tell me your Instagram Username and Password.
-
+echo " "
 
 echo I WILL SUPPORT TWO WEBBROWSERS ONLY FIREFOX AND CHROME. And type in all Capitals only.
 read -p 'Your Webbrowser:' Webbrowser
@@ -32,11 +33,12 @@ function check_if_geckodriver_is_present()
     geckodriver_variable=$(ls | grep -c "geckodriver")
     if [ "$geckodriver_variable" -eq 1 ]
     then
-        echo Chromedriver IS ALREADY PRESENT
+        echo GECKODRIVER IS ALREADY PRESENT
         cd $current_location
     else 
         cd $current_location
         download_drivers
+        echo GECKODRIVER INSTALLED
     fi
 }
 
@@ -48,11 +50,12 @@ function check_if_chromedriver_is_present()
     chromedriver_variable=$(ls | grep -c "chromedriver")
     if [ "$chromedriver_variable" -eq 1 ]
     then
-        echo Chromedriver IS ALREADY PRESENT
+        echo CHROMEDRIVER IS ALREADY PRESENT
         cd $current_location
     else 
         cd $current_location
         download_drivers
+        echo CHROMEDRIVER INSTALLED
     fi
     
 }
@@ -62,11 +65,9 @@ function download_drivers()
     if [ $Webbrowser == 'FIREFOX' ]
 then
     install_geckodriver
-    echo GeckoDriver Installed
 elif [ $Webbrowser == 'CHROME' ]
 then 
     install_chromedriver
-    echo ChromeDriverInstalled
 fi
 
 }
@@ -115,9 +116,7 @@ function printHashtags()
 if [ $Webbrowser == 'FIREFOX' ]
 then
     check_if_geckodriver_is_present
-    echo GeckoDriver Installed
 elif [ $Webbrowser == 'CHROME' ]
 then 
     check_if_chromedriver_is_present
-    echo ChromeDriverInstalled
 fi
